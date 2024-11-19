@@ -1,0 +1,731 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbit&family=Single+Day&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Gasoek+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Gasoek+One&family=Lobster&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Gasoek+One&family=Lobster&family=Orbit&display=swap');
+
+* {
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+    line-height: 1;
+    word-break: keep-all;
+}
+
+.searchimage { /*검색창 전체 효과*/
+    width: 550px;
+    height: 50px;
+    border: 1px solid rgb(222, 222, 222);
+    padding-top: 17px;
+    padding-left: 50px;
+    border-radius: 25px;
+    background-color: rgb(255, 255, 255);
+        
+    font-size: 18px;
+    color: rgb(72, 72, 72);
+        
+    left:33%;
+    top: 350px;
+    position: fixed;
+
+    cursor: pointer;
+}
+
+
+#firstsearch {
+    display: flex;
+}
+
+
+.type {/*영어 타자*/
+    display: none;
+}
+#product { /*마지막문장*/
+    display: none;
+}
+
+/*검색창 - If you're not paying*/
+    .searchimage:hover {
+        box-shadow: 0px 0px 5px rgb(188, 188, 188);
+    }
+/*search (searchimage)*/
+
+/*소셜딜레마 제목*/
+    #title { /*전체제목*/
+        font-size: 30px;
+        margin: 10px;
+        line-height: 0.1px;
+        position: fixed;
+        top: 200px;
+        left: 39%;
+        text-align: right;
+        color:rgb(39, 62, 68);
+    }
+
+    span#D { /*Dilemma 부분*/
+        font-size: 80px;
+        color:rgb(39, 62, 68);
+    }
+/*title*/
+
+@keyframes changingcolor { /*설득기술*/
+    0% {
+
+       background-color: white;
+    }
+
+    100% {
+        background-color: black;
+        
+    }
+}
+
+/*설득 기술 - 설득기술은 누군가의 행동을 */
+    #persuade {
+        padding-top: 13px;
+        padding-left: 55px;
+        overflow-y: scroll;
+        font-size: 13px;
+        line-height: 20;
+    }
+
+    #persuade:hover {
+        position: absolute;
+        width: 550px;
+        height: 1700px;
+        background-color: black;
+        box-shadow: 0px 0px 5px rgb(188, 188, 188);
+        
+        font-size: inherit;
+        color: rgb(255, 255, 255);
+        
+        transition: height 10s ease-out;
+        animation: changingcolor;
+        animation-duration: 20s;
+        animation-iteration-count: 1;
+    }
+
+    #persuadetitle {
+        font-size: 17px;
+        padding-top: 2px;
+    }
+/*persuade & persuadetitle (searchimage)*/
+
+@keyframes zoomin { /*버튼용 애니메이션*/
+    0% {
+        background-color: white;
+        opacity: 1;
+    }
+
+    50% {
+        background-color: rgb(255, 0, 0);
+        opacity: 0.5;
+        mix-blend-mode: difference;
+    }
+
+    100% {
+        font-weight: 500;
+        opacity: 1;
+        box-sizing: larger;
+        background-color: white;
+    }
+
+}
+
+/*버튼 class & id*/
+    .click { /*버튼 전체 효과*/
+        display: none;
+        position: absolute;
+
+        background-color: white;
+
+        border: 0px solid black;
+
+        text-align: center;
+        font-size: 30px;
+        font-family: "Single Day", cursive;
+        
+        animation-name: zoomin;
+        animation-duration: 0.5s;
+        animation-iteration-count: infinite;
+
+        border: 1.5px solid black;
+        
+    }
+
+    #click1 {
+        left: 800px;
+        top: 200px;
+        background-color: rgb(255, 255, 255);
+        width: 100px;
+        height: 100px;
+        border-radius: 100px;
+        padding-top: 10px;
+    }
+
+    #click2 {
+        background-color: rgb(255, 255, 255);
+        width: 200px;
+        height: 200px;
+        border-radius: 200px;
+        padding-top: 80px;
+    }
+
+    #click3 {
+        background-color: rgb(255, 255, 255);
+        width: 400px;
+        height: 400px;
+        border-radius: 400px;
+        padding-top: 160px;
+        font-size: 60px;
+
+        left: 500px;
+        bottom: 0px;
+    }
+
+    .click:hover {
+        cursor: pointer;
+    }
+
+/*USE ME! CLICK ME!: 버튼*/
+
+/*슬롯머신 - 심리학에서는 그걸 간헐적 정적 강화*/
+    #slotmachine {
+        display: none;
+        width: auto;
+        height: auto;
+
+        text-align: left;
+
+        top: 450px;
+        left: 600px;
+        position:fixed;
+        animation: stretchsearch 1s linear infinite;
+    }
+/*slotmachine*/
+
+
+/*프로그래밍 - 상품을 계속해서 쓰게 만드는 것도*/
+    #programming {
+        display: none;
+
+        width: 200px;
+        height: 250px;
+        padding: 20px;
+        background-color: rgb(140, 209, 197);
+        border: 5px dotted rgb(255, 239, 185);
+        
+        text-align: left;
+        line-height: 1.5;
+
+        right: calc(50% + 400px);
+        bottom: 400px;
+        position: absolute;
+    }
+/*programming*/
+
+/*은밀하게 - 아주 은밀하게 말이죠*/
+    #secretly {
+        display: none;
+        opacity: 0.8;
+        
+        width: 200px;
+        height: 250px;
+        padding: 20px;
+        background-color: rgb(255, 254, 221);
+        border: 10px solid rgb(137, 95, 191);
+
+        text-align: right;
+        line-height: 1.5;
+
+        left: calc(50% + 400px);
+        bottom: 400px;
+        position:fixed;
+    }
+/*secretly*/
+
+/*마지막 문구 - 그건 우연이 아니라*/
+#designed {
+    display: none;
+    
+    width: 550px;
+    height: 50px;
+    border: 1px solid rgb(222, 222, 222);
+    padding-top: 17px;
+    padding-left: 50px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 25px;
+    
+    font-size: 18px;
+    color: rgb(255, 255, 255);
+    
+    left:33%;
+    top: 350px;
+    position: fixed;
+
+
+}
+
+#designed:hover {
+    color: rgb(0, 0, 0);
+} 
+/*designed*/
+
+.windowstyle {
+    mix-blend-mode: difference;
+}
+
+/*돋보기*/
+
+    #magnifying-glass {
+        display: inline-block;
+        
+        width: 0.15em; /* 요소의 너비를 조절합니다 */
+        height: 0.15em; /* 요소의 높이를 조절합니다 */
+        border: 0.02em solid rgb(90, 90, 90); /* 테두리 두께를 조절합니다 */
+        
+        font-size: 5em; /* 크기를 줄입니다 */
+
+
+       left: 595px;
+        top: 367px;
+        position: fixed;
+        border-radius: 0.3em; /* 요소의 모서리를 둥글게 만듭니다 */
+    }
+
+    #magnifying-glass:before {
+        content: "";
+        
+        display: inline-block;
+        
+        width: 0.1em; /* 작은 삼각형의 너비를 조절합니다 */
+        height: 0.02em; /* 작은 삼각형의 높이를 조절합니다 */
+        background: rgb(90, 90, 90);
+        border-width: 0;
+
+        right: -0.07em; /* 오른쪽 여백을 조정합니다 */
+        bottom: -0.04em; /* 아래쪽 여백을 조정합니다 */
+        position: absolute;
+    
+        transform: rotate(45deg);
+    }
+
+/*돋보기*/
+
+/*모달 팝업 영역 스타일링*/
+    .modalcookie { 
+    /*팝업 배경*/
+        display: none; /*평소에는 보이지 않도록*/
+        position: absolute;
+        top:0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        overflow: hidden;
+        background: rgba(0,0,0,0.5);
+        justify-content: center;
+        line-height: 1;
+    }
+
+    .modalcookie .modalcookie_popup {
+    /*팝업*/
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 20px;
+        background: #ffffff;
+        border-radius: 20px;
+    }
+    .modalcookie .modalcookie_popup .close_cookiebtn {
+        display: block;
+        padding: 10px 20px;
+        background-color: rgb(116, 0, 0);
+        border: none;
+        border-radius: 5px;
+        color: #fff;
+        cursor: pointer;
+        transition: box-shadow 0.2s;
+    }
+/*모달팝업1*/
+
+/*새로고침 창 전체*/
+#squareforad, .news {
+    display: none;
+}
+
+/*큰광고*/
+#squareforad {
+    width: 1500px;
+    height: 2200px;
+    margin: 16px;
+    padding: 16px;
+    left: 100px;
+    top: 400px;
+    position: relative;
+    border: 1.5px solid black;
+    overflow: hidden;
+}
+
+ .advertise { /*원*/
+    position: absolute;
+    border: 1.5px solid black;
+    border-radius: 300px;
+    padding-top: 125px;
+    text-align: center;
+    width: 300px;
+    height: 300px;
+    font-size: 50px;
+    background-color: white;
+    scale: 120%
+    
+}
+
+.ad_shadow1 {
+    box-shadow: 0px 0px 100px #5cbb93;
+}
+
+.ad_shadow2 {
+    box-shadow: 0px 0px 100px #f6f788;
+}
+
+.ad_shadow3 {
+    box-shadow: 0px 0px 100px #e9b4d1;
+}
+.ad_shadow4 {
+    box-shadow: 0px 0px 100px #8da7dc;
+}
+
+.ad_shadow5 {
+    box-shadow: 0px 0px 100px #c88ddc;
+}
+
+#phrase1 { /*오늘만특가*/
+    left: 150px;
+    top: 100px;
+    font-family: "Gasoek One", sans-serif;
+}
+
+#phrase2 { /*골든타임까지 24시간*/
+    left: 1100px;
+    top: 140px;
+    padding-top: 95px;
+    font-family: "Orbit", sans-serif;
+}
+
+#phrase3 { /*90%할인*/
+    left: 550px;
+    top: 400px;
+    padding-top: 80px;
+    font-size: 30px;
+} #phrase3_btn {
+    font-family: "Lobster", sans-serif;
+    font-size: 120px;
+    font-weight: 800;
+}
+
+#phrase4 { /*user님의 취향*/
+    left: 0px;
+    top: 800px;
+    font-size: 25px;
+} #phrase4_btn {
+    border: 1px solid skyblue;
+    font-size: 20px;
+    background-color:skyblue;
+    border-radius: 10px;
+}
+
+#phrase5 { /*100만부 판매*/ 
+    left: 400px;
+    top: 900px;
+    padding-top: 100px;
+}
+
+#phrase6 { /*당신만 모르는 연예소식*/
+    left: 1000px;
+    top: 1100px;
+}
+
+#phrase7 { /*설문만 하면 스타벅스 쿠폰*/
+    left: 500px;
+    top: 1500px;
+    padding-top: 100px;
+}
+
+#phrase8 { /*threads에서 */
+    left: 0px;
+    top: 1800px;
+    padding-top: 80px;
+    font-size: 35px;
+}
+
+#phrase9 { /*아직 받지 않은 쿠폰 */
+    left: 1100px;
+    top: 1900px;
+    font-size: 40px;
+}
+/*큰광고*/
+
+/*작은광고*/
+.smalladvertise {
+position: absolute;
+border: 1.5px solid black;
+border-radius: 225px;
+padding-top: 100px;
+text-align: center;
+width: 225px;
+height: 225px;
+font-size: 20px;
+background-color: white;
+}
+
+#smallphrase1 { /*망설이면 품절*/
+    left: 600px;
+    top: 25px;
+    font-size: 30px;
+}
+
+
+#smallphrase2 { /*걷기만 하고 돈버는 방법*/
+    left: 800px;
+    top: 300px;
+    font-size: 30px;
+    padding-top: 60px;
+} #smallphrase2_btn {
+    font-size: 20px;
+    background-color: #f6f788;
+    border-radius: 10px;
+}
+
+#smallphrase3 { /*서울여대, 서울대와 통합*/
+    left: 1200px;
+    top: 600px;
+}
+
+#smallphrase4 { /*광고 30초 보고 무료 아이템 얻기*/
+    left: 40px;
+    top: 600px;
+}
+
+#smallphrase5 { /*한국에서 합법적으로 카지노*/
+    left: 1100px;
+    top: 1500px;
+    padding-top: 80px;
+}
+
+#smallphrase6 { /*신규가입자에게 특별혜택*/
+    left: 100px;
+    top: 1300px;
+}
+
+#smallphrase7 { /*역대급 SSR 캐릭터 출시*/
+    left: 900px;
+    top: 900px;
+    padding-top: 75px;
+    line-height: 2;
+    font-weight: 900;
+} #smallphrase7_btn {
+    background-color: red;
+    border-radius: 10px;
+    font-weight: 300;
+}
+/*작은광고*/
+
+
+
+/*새로고침 3문장*/
+.news {
+    font-size: 20px;
+    line-height: 2;
+    border: 1px solid black;
+    width: 1200px;
+    padding: 10px;
+    text-align: justify;
+
+    }
+
+/*새로고침을 하면 새로운 게 제일 위에 뜰 겁니다.*/
+#new {
+    left: 120px;
+    top: 400px;
+    position: relative;
+    padding-left: 30px;
+}
+
+/*새로고침을 또 하면 매번 달라질겁니다.*/
+#newnew {
+    left: 420px;
+    top: 380px;
+    position: relative;
+    text-align: right;
+    padding-right: 30px;
+}
+
+/*매번 말이죠*/
+#newnewnew {
+    left: 120px;
+    top: 360px;
+    position: relative;
+    padding-left: 30px;
+}
+
+#horizontal_line { /*웹사이트 가로선*/
+    display: none;
+    border: 0.7px solid black;
+    width: 1700px;
+    height: 0;
+    position: relative;
+    left: 0px;
+    top: 300px;
+}
+
+#vertical_line {
+    display: none;
+    border: 0.7px solid black;
+    width: 0px;
+    height: 2900px;
+    position: absolute;
+    left: 1700px;
+    top: 0px;
+}
+
+@keyframes homeicon_animation {
+    0% {
+        color: rgb(125, 125, 125);
+        opacity: 1;
+        text-shadow: 0px 0px 2px red;
+    }
+
+    50% {
+        color: red;
+        opacity: 0.5;
+    }
+
+    100% {
+        color: rgb(125, 125, 125);
+        opacity: 1;
+    }
+}
+
+#homeicon {
+    display: none;
+    font-size: 30px;
+    font-weight: 500;
+    position: absolute;
+    left: 140px;
+    top: 260px;
+    color: rgb(125, 125, 125);
+    filter: blur(4px);
+}
+
+#homeicon.active {
+    animation-name: homeicon_animation;
+    animation-duration: 0.5s;
+    animation-iteration-count: infinite;
+}
+
+#retryicon {
+    display: none;
+    font-size: 30px;
+    position: absolute;
+    left: 170px;
+    top: 260px;
+    color: rgb(125, 125, 125);
+}
+
+#retryicon:hover {
+    cursor: pointer;
+    font-size: 32px;
+    color: red;
+}
+
+#retryicon.active:hover {
+    cursor: default;
+    font-size: 30px;
+    color: rgb(125, 125, 125);
+}
+
+
+
+@keyframes instagram {
+    0% {
+        right: -500px
+    }
+
+    100% {
+        right: 50px;
+    }
+}
+
+@keyframes exitinstagram {
+    0% {
+        right: 50px
+    }
+
+    100% {
+        right: -500px;
+    }
+}
+
+#instaalarm {
+    display: none;
+    width: 338px;
+    height: 75px;
+    position: fixed;
+
+    font-weight: 300;
+    font-size: 13px;
+    text-align: center;
+    padding-top: 35px;
+    padding-left: 40px;
+    color: rgb(0, 0, 0);
+
+    background-color: rgb(243, 243, 243);
+    border-radius: 18px;
+    box-shadow: 0px 0px 5px rgb(188, 188, 188);
+
+    right: 50px;
+    top: 50px;
+    animation-name: instagram;
+    animation-duration: 1.5s;
+    animation-iteration-count: 1;
+} #myname {
+    font-weight: 500;
+}
+
+#instaalarm:hover {
+    cursor: pointer;
+}
+
+#insta_profile {
+    color:rgb(143, 152, 163);
+    font-size: 85px;
+    position: absolute;
+    left: 10px;
+    bottom: -2px;
+    
+}
+
+#username {
+    position: absolute;
+    font-weight: 700;
+    font-size: 17px;
+
+    left: 70px;
+    top: 13px;
+}
+
+#lastsquare {
+    display: none;
+    left: 0px;
+    top: 0px;
+    background-color: black;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+
+    mix-blend-mode: difference;
+}
+
+#designed {
+    box-shadow: 0px 0px 5px rgb(188, 188, 188);
+}
