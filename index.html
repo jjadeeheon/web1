@@ -1,175 +1,235 @@
 <!DOCTYPE html>
-<html>
-    <head> 
-        <title>2022111538 조현서</title>
-        <meta charset="UTF-8"> <!--- 한글이 깨지지 않게 해줌-->
-        <link rel="stylesheet" href="./style.css"> <!--style 파일과 연결-->
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Design Shelf</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Noto Sans KR', sans-serif;
+      margin-top: 120px;
+      padding: 0;
+      background-color: #121212;
+    }
+    .navbar {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      padding: 1rem;
+      /* background-color: #20364d;
+      border-bottom: 1px solid #ddd; */
+    }
+    .navbar h1 {
+      font-size: 1.5rem;
+      margin-right: 2rem;
+    }
+    .navbar ul {
+      display: flex;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      gap: 1.5rem;
+    }
+    .navbar ul li {
+      margin-right: 1rem;
+      cursor: pointer;
+    }
+    .navbar ul li:hover {
+      /* text-decoration: underline; */
+      color: #af3a3a;
+    }
+    .book-card {
+      position: relative;
+      overflow: hidden; /* 이미지가 카드 밖으로 나가지 않도록 처리 */
+      border-radius: 8px;
+      background: #f8f9fa;
+      cursor: pointer;
+    }
 
-    </head>
+    .book-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
 
-    <body>    
-        <div id="title"><b>/theSocial<br /><span id="D"><i>Dilemma</i></span></b></div>
-        <div id="horizontal_line"></div>
-        <div id="vertical_line"></div>
-        <div id="homeicon">⌂</div>
-        <div id="retryicon">↻</div>
+    .book-card img {
+      width: 100%; /* 카드 폭에 맞춤 */
+      height: 100%; /* 고정된 카드 높이 */
+      object-fit: cover; /* 비율 유지하며 크기에 맞춤 */
+    }
 
-        <div class="searchimage" id="slotsearch">라스베가스의 슬롯머신</div>
-    
-        <div id="slotmachine">
-            심리학에서는 그걸 간헐적 정적 강화라고 합니다. 
-            언제 뜰지도 모르고 뭐가 뜰지도 모르는 게 <b>라스베가스의 슬롯 머신</b>과 완전히 똑같죠. 
+    /* 작은 화면에서 카테고리 숨기기
+    @media (max-width: 1000px) {
+    .navbar-nav {
+      display: none;
+    }
+    } */
+  
+  </style>
+</head>
+<body>
+  <!-- 헤더 영역 --> 
+
+  <nav class="navbar bg-body-tertiary fixed-top">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Design Shelf</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+        <i class="bi bi-search"></i>
+      </button>
+      <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Design Shelf</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
-
-        <div id="programming">
-            상품을 계속해서 쓰게 만드는 것도 모자라서 뇌간 깊숙한 곳으로 들어가 
-            여러분들에게 <b>무의식적인 습관</b>을 심어서 심층부에서부터 프로그래밍을 하는 겁니다. 
+        <div class="offcanvas-body">
+          <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Graphic</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">UX/UI</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Product</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Branding</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Animation</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Typography</a>
+              </li>
+            <!-- <li class="nav-item">
+              <a class="nav-link" href="#">Link</a>
+            </li> -->
+            <!-- <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Dropdown
+              </a> -->
+              <!-- <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Action</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li>
+                  <hr class="dropdown-divider">
+                </li>
+                <li><a class="dropdown-item" href="#">Something else here</a></li>
+              </ul> -->
+            </li>
+          </ul>
+          <form class="d-flex mt-3" role="search" id="search">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+          </form>
         </div>
+      </div>
+    </div>
+  </nav>
+<!--   
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+     
+      <a class="navbar-brand" href="index.html"></a>
+ 
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0 d-none d-lg-flex">
+        <li class="nav-item"><a class="nav-link" href="#" onclick="filterByCategory('all')">All</a></li>
+        <li class="nav-item"><a class="nav-link" href="#" onclick="filterByCategory('graphic')">Graphic</a></li>
+        <li class="nav-item"><a class="nav-link" href="#" onclick="filterByCategory('uxui')">UX/UI</a></li>
+        <li class="nav-item"><a class="nav-link" href="#" onclick="filterByCategory('product')">Product</a></li>
+        <li class="nav-item"><a class="nav-link" href="#" onclick="filterByCategory('branding')">Branding</a></li>
+        <li class="nav-item"><a class="nav-link" href="#" onclick="filterByCategory('typography')">Typography</a></li>
+      </ul>
 
-        <div id="secretly">
-            아주 은밀하게 말이죠. <br />
-            책상 위의 스마트폰을 볼 때마다 계속 눈이 가고, 손이 가기 마련이에요. 
-            재밌는 게 있을 것 같거든요. 그리고, <b>슬롯머신</b>을 당겨 보는 거죠.
+      <nav class="navbar bg-body-tertiary">
+        <div class="container-fluid">
+          <form class="d-flex" role="search">
+            
+            <button class="btn btn-outline-success" type="submit"><i class="bi bi-search"></i></button>
+          </form>
         </div>
+      </nav>
+    </div>
+  </nav> -->
+  
 
-        <div id="persuade" class="searchimage">
-            <div id="persuadetitle">설득 기술</div> <br />
+  <!-- 책 그리드 -->
+  <div class="container mt-4">
+    <div class="row" id="bookGrid">
 
-            설득 기술은 누군가의 행동을 바꾸기 위해 극단적으로 설계된 디자인입니다. <br /> 
-            사용자가 특정한 행동을 하게 만들고 <b>스크롤</b>을 멈출 수 없게 하려고 말이죠. <br /> 
-        
-        
-            뭔가를 당신에게 요구한다면 도구가 아닌 거죠. <br /> 
-            당신을 유혹하고 조종하며 당신에게서 뭔가를 요구해요. <br /> 
-            소셜 미디어는 사용되길 기다리는 도구가 아닙니다. <br /> 
-            그만의 목적이 있고 그 목적을 달성하려고 합니다. <br /> 
-            <b>당신의 심리를 역이용해서 말이죠.</b>
+      <!-- Graphic 카테고리 -->
+      <div class="col-lg-2 col-md-4 col-12 mb-4" data-category="graphic">
+        <div class="book-card">
+          <a href="bookdetails.html"><img src="./한글디자인교과서.jpg" alt="한글디자인교과서"></a>
         </div>
+      </div>
 
-        <div class="searchimage" id="designed">
-            그건 우연이 아니라, 그렇게 디자인된 거예요.
+      <!-- UX/UI 카테고리 -->
+      <div class="col-lg-2 col-md-4 col-12 mb-4" data-category="uxui">
+        <div class="book-card">
+          <img src="./레이아웃불변의법칙100가지.jpeg" alt="레이아웃 불변의 법칙 100가지">
         </div>
+      </div>
 
-        <!-- <div id="product">
-            상품의 대가를 치르지 않으면 네가 상품이다.
-        </div> -->
-        
-        <div class="searchimage" id="firstsearch">
-            <span class="type">I</span>
-            <span class="type">f</span>
-            <span class="type">&nbsp;</span>
-            <span class="type">y</span>
-            <span class="type">o</span>
-            <span class="type">u</span>
-            <span class="type">'</span>
-            <span class="type">r</span>
-            <span class="type">e</span>
-            <span class="type">&nbsp;</span>
-            <span class="type">n</span>
-            <span class="type">o</span>
-            <span class="type">t</span>
-            <span class="type">&nbsp;</span>
-            <span class="type">p</span>
-            <span class="type">a</span>
-            <span class="type">y</span>
-            <span class="type">i</span>
-            <span class="type">n</span>
-            <span class="type">g</span>
-            <span class="type">&nbsp;</span>
-            <span class="type">f</span>
-            <span class="type">o</span>
-            <span class="type">r</span>
-            <span class="type">&nbsp;</span>
-            <span class="type">t</span>
-            <span class="type">h</span>
-            <span class="type">e</span>
-            <span class="type">&nbsp;</span>
-            <span class="type">p</span>
-            <span class="type">r</span>
-            <span class="type">o</span>
-            <span class="type">d</span>
-            <span class="type">u</span>
-            <span class="type">c</span>
-            <span class="type">t</span>
-            <span class="type">,</span>
-            <span class="type">&nbsp;</span>
-            <span class="type">t</span>
-            <span class="type">h</span>
-            <span class="type">e</span>
-            <span class="type">n</span>
-            <span class="type">&nbsp;</span>
-            <span class="type">y</span>
-            <span class="type">o</span>
-            <span class="type">u</span>
-            <span class="type">&nbsp;</span>
-            <span class="type">a</span>
-            <span class="type">r</span>
-            <span class="type">e</span>
-            <span class="type">&nbsp;</span>
-            <span class="type">t</span>
-            <span class="type">h</span>
-            <span class="type">e</span>
-            <span class="type">&nbsp;</span>
-            <span class="type" style="font-weight: bold">p</span>
-            <span class="type" style="font-weight: bold">r</span>
-            <span class="type" style="font-weight: bold">o</span>
-            <span class="type" style="font-weight: bold">d</span>
-            <span class="type" style="font-weight: bold">u</span>
-            <span class="type" style="font-weight: bold">c</span>
-            <span class="type" style="font-weight: bold">t</span>
-            <span class="type" style="font-weight: bold">.</span>
+      <!-- Product 카테고리 -->
+      <div class="col-lg-2 col-md-4 col-12 mb-4" data-category="product">
+        <div class="book-card">
+          <img src="./인간을위한디자인.jpg" alt="인간을위한디자인">
         </div>
+      </div>
 
-
-        <div class="modalcookie">
-            <div class="modalcookie_popup"> 
-                <p>...gle.com에서 다음 권한을 요청합니다.</p><br />
-                <p>●　내 검색기록 확인</p> <br /><br />
-                <button type="button" class="close_cookiebtn">허용</button>
-            </div>
+      <!-- Branding 카테고리 -->
+      <div class="col-lg-2 col-md-4 col-12 mb-4 " data-category="branding">
+        <div class="book-card">
+          <img src="./한글의글자표현.jpg" alt="한글의글자표현">
         </div>
+      </div>
 
-        <div class="news" id="newnewnew">매번 말이죠.</div>
-        <div class="news" id="newnew">새로고침을 또 하면 매번 달라집니다.</div>
-        <div class="news" id="new">새로고침을 하면 새로운 게 제일 위에 뜰 겁니다. </div>
-
-
-        
-        <div id="squareforad">
-
-            <div class="advertise ad_shadow1" id="phrase1">오늘만 특가</div>
-            <div class="advertise ad_shadow2" id="phrase2">골든타임까지 <br /> 24시간</div>
-            <div class="advertise ad_shadow3" id="phrase3"><span id="phrase3_btn">90% <br /></span> 할인</div>
-            <div class="advertise ad_shadow1" id="phrase4">user님의 취향에 맞춘 <br />추천 상품이 있어요! <br /><br /><span id="phrase4_btn"> 확인하기 > </span> </div>
-            <div class="advertise ad_shadow2" id="phrase5">100만부 <br />판매 돌파</div>
-            <div class="advertise ad_shadow3" id="phrase6">당신만 모르는 연예소식</div>
-            <div class="advertise ad_shadow1" id="phrase7">설문만 하면 스타벅스 쿠폰 10장</div>
-            <div class="advertise ad_shadow2" id="phrase8">threads에서 친구들이 회원님을 팔로우 하고 싶어해요!</div>
-            <div class="advertise ad_shadow3" id="phrase9">아직 받지 않은 쿠폰이 있어요!</div>
-        
-            <div class="smalladvertise  ad_shadow4" id="smallphrase1">망설이면 품절</div>
-            <div class="smalladvertise  ad_shadow1" id="smallphrase2">걷기만 하고 <br />돈버는 방법 <br /><br /> <span id="smallphrase2_btn">설치하러 가기 ></span></div>
-            <div class="smalladvertise  ad_shadow2" id="smallphrase3">"서울여대, <br />서울대와 통합 추진"</div>
-            <div class="smalladvertise  ad_shadow3" id="smallphrase4">광고 30초 보고 <br /> 무료 아이템 얻기</div>
-            <div class="smalladvertise  ad_shadow2" id="smallphrase5">한국에서 합법적으로 카지노하는 법 <br />지금 당장 하러가기 >>></div>
-            <div class="smalladvertise  ad_shadow3" id="smallphrase6">신규가입자에게 특별혜택!</div>
-            <div class="smalladvertise  ad_shadow4" id="smallphrase7">역대급 SSR 캐릭터 출시!<br /> <span id="smallphrase7_btn">Download</span> </div>
-
-
-            <div id="click1" class="click ad_shadow5">click<br />me!</div>
-            <div id="click2" class="click ad_shadow5">Click Me!</div>
-            <div id="click3" class="click ad_shadow5">CLICK ME!</div>
+      <!-- Typography 카테고리 -->
+      <div class="col-lg-2 col-md-4 col-12 mb-4" data-category="typography">
+        <div class="book-card">
+          <img src="./조형의원리.jpeg" alt="조형의원리">
         </div>
+      </div>
 
-
-        <div id="instaalarm">
-            <div id="insta_profile">⚉</div> <div id="username"></div> <span id="myname">hyeonseo_</span>님이 회원님의 스토리를 좋아합니다.
+      <div class="col-lg-2 col-md-4 col-12 mb-4" data-category="typography">
+        <div class="book-card">
+          <img src="./타이포그래피에밀루더.jpg" alt="타이포그래피에밀루더">
         </div>
+      </div>
+    </div>
+  </div>
 
-        <div id="magnifying-glass"></div> <!--돋보기-->
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // 카테고리 필터링
+    function filterByCategory(category) {
+      const books = document.querySelectorAll('[data-category]');
+      books.forEach(book => {
+        if (category === 'all' || book.getAttribute('data-category') === category) {
+          book.style.display = 'block'; // 해당 카테고리 보이기
+        } else {
+          book.style.display = 'none'; // 해당 카테고리 숨기기
+        }
+      });
+    }
 
-        <div id="lastsquare"></div>
-    </body>
-    <script src="./script.js"></script>
+    document.getElementById('searchBar').addEventListener('input', function () {
+  const query = this.value.toLowerCase();
+  const books = document.querySelectorAll('[data-category]');
+  books.forEach(book => {
+    const title = book.querySelector('img').alt.toLowerCase(); // 이미지 alt를 책 제목으로 사용
+    if (title.includes(query)) {
+      book.style.display = 'block';
+    } else {
+      book.style.display = 'none';
+    }
+  });
+});
 
+  </script>
+</body>
 </html>
