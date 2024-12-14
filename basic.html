@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Design Bookmark</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f9f9f9;
+            margin: 0;
+
+            background: #ff6e7f;  /* fallback for old browsers */
+            background: -webkit-linear-gradient(to bottom, rgb(121, 179, 255), #ffffff , #bfe9ff);  /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient(to bottom, rgb(121, 179, 255), #ffffff , #bfe9ff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        }
+
+
+        .navbar {
+                padding: 15px 30px;
+                z-index: 1030;
+                width: 100%;
+                position: fixed;
+                top: 0;
+                background-color: white;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+                
+            }
+
+            .navbar .btn-outline-dark {
+                border: 2px solid #6efff0;
+                padding: 5px 15px;
+                font-weight: bold;
+                transition: all 0.3s ease;
+                font-size: 14px;
+                margin-left: 10px;
+                margin-top: 10px;
+                background-color: #ff6e7f;
+            }
+
+            #search {
+                margin-right: 20px;
+                margin-left: 10px;
+            }
+
+            .profile_icon {
+                font-size: 2rem;
+                height: 50px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .profile_icon {
+                margin-left: 50px;
+            }            
+
+            .navbar .form-control:focus {
+                border-color: #999;
+                box-shadow: none;
+            }
+       
+            .profile-page {
+                max-width: 1000px;
+                margin: 120px auto;
+                padding: 30px;
+                background-color: #bfe9ff;
+                border-radius: 10px;
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            }
+
+            .profile-page h2 {
+                font-size: 2rem;
+                color: #333;
+                margin-bottom: 30px;
+                text-align: center;
+            }
+
+
+
+           
+            .layout {
+                display: flex;
+                margin: 40px auto;
+                max-width: 1200px;
+                gap: 20px; /* Sidebar와 main-content 사이의 간격 */
+                margin-top: 100px;
+            }
+
+            .sidebar {
+                width: 250px;
+                background-color: #fff;
+                border: 1px solid #ddd;
+                border-radius: 10px;
+                padding: 20px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                position: sticky; /* 화면 크기에 따라 고정 */
+                top: 100px; /* Navbar 높이에 맞춤 */
+                height: calc(100vh - 120px); /* Navbar 높이를 뺀 나머지 높이 */
+                overflow-y: auto;
+                flex-shrink: 0; /* 너비 고정 */
+            }
+
+            .main-content {
+                flex-grow: 1; /* 남은 공간을 차지 */
+                background-color: #fff;
+                padding: 20px;
+                border: 1px solid #ddd;
+                border-radius: 10px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            }
+
+
+
+        .sidebar h2 {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #333333;
+        }
+
+        .sidebar a {
+            display: block;
+            font-size: 1rem;
+            color: #555555;
+            margin-bottom: 15px;
+            text-decoration: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: background-color 0.2s;
+        }
+
+        .sidebar a:hover {
+            background-color: #f1f1f1;
+            color: rgb(114, 173, 255);
+        }
+
+
+        .main-content h2 {
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .books-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .book-card {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+            transition: transform 0.2s;
+        }
+
+        .book-card img {
+            width: 100%;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+
+        .book-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            display: none;
+        }
+
+        .popup-content {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            max-width: 600px;
+            width: 90%;
+        }
+
+        .popup-content h1 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+
+        .popup-content img {
+            max-width: 100%;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .popup-content button {
+            padding: 10px 20px;
+            font-size: 1rem;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .popup-content button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg bg-white shadow-sm">
+        <div class="container-fluid d-flex align-items-center">
+            <a class="navbar-brand d-flex align-items-center me-3" href="#">
+                <img src="./디북마크 로고.png" id="logo" alt="Logo" width="24" class="me-2">
+                <span class="fw-bold" id="pagename"><a href="./index.html">Designbookmark</a></span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item btn btn-outline-dark rounded-pill d-flex align-items-center">
+                        <a href="./basic.html">디자인의 기초</a>
+                    </li>
+                    <li class="nav-item btn btn-outline-dark rounded-pill d-flex align-items-center">
+                        <a href="./graphic.html">디자인 사고와 소양</a>
+                </ul>
+                <div class="ms-auto d-flex align-items-center">
+                    <input type="text" class="form-control rounded-pill me-2" id="search" placeholder="Search">
+                    <a href="./mypage.html"><i class="bi bi-person-circle profile_icon"></i></a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="popup" id="popup">
+        <div class="popup-content">
+            <h1>한글 디자인의 기초부터 알고 싶다면</h1>
+            <img src="https://via.placeholder.com/300x400" alt="Book Cover">
+            <p>한글디자인교과서<br>안상수 한재준 이용제</p>
+            <button id="close-popup">닫기</button>
+        </div>
+    </div>
+
+    <div class="layout">
+        <div class="sidebar">
+            <h2 class="mt-4">Basic</h2>
+            <div class="mt-5">
+                <a href="#allbooks" data-bs-target="#allbooks" class="nav-link">전체</a>
+                <a href="#layout" data-bs-target="#layout" class="nav-link">레이아웃</a>
+                <a href="#typography" data-bs-target="#typography" class="nav-link">타이포그래피</a>
+                <a href="#colortheory" data-bs-target="#colortheory" class="nav-link">색채이론</a>
+                <a href="#pof" data-bs-target="#pof" class="nav-link">조형원리</a>
+                <a href="#philosophy" data-bs-target="#philosophy" class="nav-link">디자인철학</a>
+                <a href="#self" data-bs-target="#self" class="nav-link">디자인자기계발</a>
+                <a href="#aesthetic" data-bs-target="#aesthetic" class="nav-link">심미적감각</a>
+            </div>
+        </div>
+
+        <div class="main-content" id="allbooks">
+            <h2 class="mt-4">Books</h2>
+            <div class="filter-tabs">
+                <button class="active">전체</button>
+                <button>국내도서</button>
+                <button>외국도서</button>
+            </div>
+            <div class="books-grid">
+                <!-- 책 카드 리스트 -->
+                <div class="book-card">
+                    <img src="https://via.placeholder.com/150x225" alt="Book 1">
+                    <p>한글 디자인 교과서</p>
+                </div>
+                <div class="book-card">
+                    <img src="https://via.placeholder.com/150x225" alt="Book 2">
+                    <p>디자인 사고의 이해</p>
+                </div>
+                <div class="book-card">
+                    <img src="https://via.placeholder.com/150x225" alt="Book 3">
+                    <p>컬러와 조형</p>
+                </div>
+            </div>
+
+
+            <div id="layout" class="books-grid">
+                <!-- 책 카드 리스트 -->
+                <div class="book-card">
+                    <img src="https://via.placeholder.com/150x225" alt="Book 1">
+                    <p>한글 디자인 교과서</p>
+                </div>
+                <div class="book-card">
+                    <img src="https://via.placeholder.com/150x225" alt="Book 2">
+                    <p>디자인 사고의 이해</p>
+                </div>
+                <div class="book-card">
+                    <img src="https://via.placeholder.com/150x225" alt="Book 3">
+                    <p>컬러와 조형</p>
+                </div>
+            </div>
+
+
+            <div id="typography" class="books-grid">
+                <!-- 책 카드 리스트 -->
+                <div class="book-card">
+                    <img src="https://via.placeholder.com/150x225" alt="Book 1">
+                    <p>한글 디자인 교과서</p>
+                </div>
+                <div class="book-card">
+                    <img src="https://via.placeholder.com/150x225" alt="Book 2">
+                    <p>디자인 사고의 이해</p>
+                </div>
+                <div class="book-card">
+                    <img src="https://via.placeholder.com/150x225" alt="Book 3">
+                    <p>컬러와 조형</p>
+                </div>
+            </div>
+
+
+            <div id="colortheory" class="books-grid">
+                <!-- 책 카드 리스트 -->
+                <div class="book-card">
+                    <img src="https://via.placeholder.com/150x225" alt="Book 1">
+                    <p>한글 디자인 교과서</p>
+                </div>
+                <div class="book-card">
+                    <img src="https://via.placeholder.com/150x225" alt="Book 2">
+                    <p>디자인 사고의 이해</p>
+                </div>
+                <div class="book-card">
+                    <img src="https://via.placeholder.com/150x225" alt="Book 3">
+                    <p>컬러와 조형</p>
+                </div>
+            </div>
+
+
+            <div id="pof" class="books-grid">
+                <!-- 책 카드 리스트 -->
+                <div class="book-card">
+                    <img src="https://via.placeholder.com/150x225" alt="Book 1">
+                    <p>한글 디자인 교과서</p>
+                </div>
+                <div class="book-card">
+                    <img src="https://via.placeholder.com/150x225" alt="Book 2">
+                    <p>디자인 사고의 이해</p>
+                </div>
+                <div class="book-card">
+                    <img src="https://via.placeholder.com/150x225" alt="Book 3">
+                    <p>컬러와 조형</p>
+                </div>
+            </div>
+
+
+            <div id="philosophy" class="books-grid">
+                <!-- 책 카드 리스트 -->
+                <div class="book-card">
+                    <img src="https://via.placeholder.com/150x225" alt="Book 1">
+                    <p>한글 디자인 교과서</p>
+                </div>
+                <div class="book-card">
+                    <img src="https://via.placeholder.com/150x225" alt="Book 2">
+                    <p>디자인 사고의 이해</p>
+                </div>
+                <div class="book-card">
+                    <img src="https://via.placeholder.com/150x225" alt="Book 3">
+                    <p>컬러와 조형</p>
+                </div>
+            </div>
+
+            
+            <div id="self" class="books-grid">
+                <!-- 책 카드 리스트 -->
+                <div class="book-card">
+                    <img src="https://via.placeholder.com/150x225" alt="Book 1">
+                    <p>한글 디자인 교과서</p>
+                </div>
+                <div class="book-card">
+                    <img src="https://via.placeholder.com/150x225" alt="Book 2">
+                    <p>디자인 사고의 이해</p>
+                </div>
+                <div class="book-card">
+                    <img src="https://via.placeholder.com/150x225" alt="Book 3">
+                    <p>컬러와 조형</p>
+                </div>
+            </div>
+
+
+            <div id="aesthetic" class="books-grid">
+                <!-- 책 카드 리스트 -->
+                <div class="book-card">
+                    <img src="https://via.placeholder.com/150x225" alt="Book 1">
+                    <p>한글 디자인 교과서</p>
+                </div>
+                <div class="book-card">
+                    <img src="https://via.placeholder.com/150x225" alt="Book 2">
+                    <p>디자인 사고의 이해</p>
+                </div>
+                <div class="book-card">
+                    <img src="https://via.placeholder.com/150x225" alt="Book 3">
+                    <p>컬러와 조형</p>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+
+    <div class="scroll-arrow">
+        <i class="bi bi-chevron-up"></i>
+    </div>
+
+    <script>
+        const popup = document.getElementById('popup');
+        const closePopup = document.getElementById('close-popup');
+
+        window.addEventListener('load', () => {
+            popup.style.display = 'flex';
+        });
+
+        closePopup.addEventListener('click', () => {
+            popup.style.display = 'none';
+        });
+
+        const scrollArrow = document.querySelector('.scroll-arrow');
+
+        scrollArrow.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        const filterButtons = document.querySelectorAll('.filter-tabs button');
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+            });
+        });
+    </script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
