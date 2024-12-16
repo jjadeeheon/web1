@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Book Detail - Online Bookstore</title>
+        <!-- Bootstrap CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+        <!-- Bootstrap Icons -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+        <!-- Google Fonts -->
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&family=Playwrite+IE:wght@369&display=swap');
+            
+              body {
+                background: #f8f9fa;
+                background: -webkit-linear-gradient(to top, white, #bfe9ff, rgb(255, 151, 66));  /* Chrome 10-25, Safari 5.1-6 */
+                background: linear-gradient(to top, white, #bfe9ff, rgb(255, 151, 66)); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+                font-family: 'Roboto', sans-serif;
+                margin: 0;
+                padding: 0;
+            }
+
+            a {
+            text-decoration: none; /* 밑줄 제거 */
+            color: inherit; /* 부모 요소의 색상 상속 */
+            }
+
+
+            html {
+                scroll-behavior: smooth;
+            }
+
+            .content-container {
+                max-width: 1000px;
+                margin: 40px auto;
+                padding: 40px;
+                background-color: #ffffff;
+                border-radius: 10px;
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            }
+
+
+            /* 그리드 아이템 스타일 */
+            .grid-item {
+                width: 100%;
+                aspect-ratio: 1 / 1.4;
+                border-radius: 10px;
+                background: #ddd;
+            }
+
+            .navbar {
+                padding: 15px 30px;
+                z-index: 1030;
+                width: 100%;
+                position: fixed;
+                top: 0;
+                background-color: white;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+
+
+                font-family: "Playwrite IE", cursive;
+                font-optical-sizing: auto;
+                font-weight: 369;
+                font-style: normal;
+                font-size: 20px;
+            }
+
+            .navbar .btn-outline-dark {
+                border: 2px solid #565656;
+                padding: 5px 15px;
+                font-weight: bold;
+                transition: all 0.3s ease;
+                font-size: 14px;
+                margin-left: 10px;
+                margin-top: 10px;
+            }
+
+            #search {
+                margin-right: 20px;
+                margin-left: 10px;
+            }
+
+            .profile_icon {
+                font-size: 2rem;
+                height: 50px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .profile_icon {
+                margin-left: 50px;
+            }
+
+            .navbar .form-control:focus {
+                border-color: #999;
+                box-shadow: none;
+            }
+
+            .content-container {
+                max-width: 1200px;
+                margin: 0 auto;
+                padding: 80px 20px;
+                display: flex;
+                flex-wrap: wrap;
+                align-items: center;
+                justify-content: space-between;
+                background-color: #fff;
+                border-radius: 10px;
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            }
+
+            .book-cover {
+                flex: 1 1 300px;
+                text-align: center;
+                padding: 120px;
+            }
+
+            .book-cover img {
+                max-width: 100%;
+                height: auto;
+                border-radius: 10px;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            }
+
+            .book-info {
+                flex: 2 1 600px;
+                padding: 20px;
+            }
+            .book-info h1 {
+                font-size: 2.4rem;
+                font-weight: 700;
+                color: #343a40;
+                margin-bottom: 20px;
+            }
+
+            .book-info p {
+                font-size: 1rem;
+                color: #495057;
+                line-height: 1.8;
+                margin-bottom: 10px;
+            }
+
+            .book-info .author {
+                font-weight: 500;
+                margin-bottom: 20px;
+                font-size: 1.2rem;
+            }
+
+            .purchase-links {
+                margin-top: 30px;
+            }
+            .purchase-links a {
+                margin-right: 15px;
+                padding: 10px 20px;
+                font-size: 1rem;
+                font-weight: 500;
+                border-radius: 5px;
+                color: #fff;
+                text-decoration: none;
+                transition: background-color 0.3s ease;
+            }
+
+
+            .purchase-links a.amazon {
+                background-color: #ff9900;
+            }
+
+            .purchase-links a.kyobo {
+                background-color: #007d00;
+            }
+
+            .purchase-links a.yes24 {
+                background-color: #0066cc;
+            }
+
+
+            .description {
+                padding: 20px;
+                padding-top: 50px;
+            }
+
+            .description h2 {
+                font-size: 1.8rem;
+                color: #333;
+                margin-bottom: 20px;
+            }
+
+            .description p {
+                font-size: 1rem;
+                color: #555;
+                line-height: 1.6;
+                margin-bottom: 10px;
+            }
+
+            .sns-links {
+                margin-top: 40px;
+                text-align: center;
+            }
+            
+            .sns-links h3 {
+                font-size: 1.5rem;
+                font-weight: 700;
+                margin-bottom: 20px;
+                color: #343a40;
+            }
+
+            .sns-links .btn {
+                margin: 0 10px;
+                border-radius: 50%;
+                width: 60px;
+                height: 60px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 1.5rem;
+                color: #fff;
+            }
+            
+
+            .author-info {
+                display: flex; /* Flexbox로 설정 */
+                align-items: center; /* 수직 중앙 정렬 */
+                gap: 20px; /* 이미지와 텍스트 사이 간격 */
+                margin-top: 20px; /* 상단 여백 */
+            }
+
+            .author-info img {
+                width: 150px; /* 이미지의 너비 */
+                height: 150px; /* 높이를 동일하게 설정하여 정사각형 유지 */
+                border-radius: 50%; /* 정원형으로 만들기 */
+                object-fit: cover; /* 이미지가 정원형 안에 잘 맞도록 */
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 그림자 추가 */
+            }
+
+            .author-text {
+                max-width: 600px; /* 텍스트의 최대 너비 */
+            }
+
+            .author-text h3 {
+                margin-bottom: 10px;
+                font-size: 1.5rem;
+                color: #333;
+            }
+
+            .author-text p {
+                font-size: 1rem;
+                color: #555;
+                line-height: 1.6; /* 가독성을 위한 줄 간격 */
+            }
+
+            .author-books {
+                display: flex;
+                flex-wrap: wrap;
+                margin-top: 20px;
+            }
+
+            .author-books .book-item {
+                width: calc(25% - 20px);
+                margin: 10px;
+                text-align: center;
+            }
+
+            .author-books img {
+                width: auto;
+                border-radius: 5px;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+                margin-bottom: 10px;
+            }
+
+            .authors {
+                background-color: #dedede;
+                padding: 30px;
+                width: 98%;
+                border-radius: 20px;
+
+            }
+
+
+
+
+            .reviews {
+                max-width: 1200px;
+                margin: 20px auto;
+                background-color: #fff;
+                padding: 20px;
+                border-radius: 10px;
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            }
+
+            .reviews .comment-box {
+                background: #f9f9f9;
+                padding: 15px;
+                border-radius: 5px;
+                margin-bottom: 20px;
+                border: 1px solid #ddd;
+            }
+
+            .reviews .comment {
+                margin-bottom: 15px;
+                padding: 10px;
+                background: #f1f1f1;
+                border-radius: 5px;
+            }
+
+            @media (max-width: 768px) {
+                .navbar .ms-auto {
+                    order: 2;
+                }
+
+                #search {
+                    order: 1;
+                    margin-right: 0;
+                }
+
+                .profile_icon {
+                    order: 3;
+                    margin-left: auto;
+                }
+            }
+
+            .texts {
+                padding-right: 120px;
+            }
+
+            .weight {
+                font-weight: 600;
+            }
+        </style>
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg bg-white shadow-sm">
+            <div class="container-fluid d-flex align-items-center">
+                <a class="navbar-brand d-flex align-items-center me-3" href="#">
+                    <img src="./디북마크 로고.png" id="logo" alt="Logo" width="24" class="me-2">
+                    <span class="fw-bold" id="pagename"><a href="./index.html">Designbookmark</a></span>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <a href="./basic.html"><li class="nav-item btn btn-outline-dark rounded-pill d-flex align-items-center">
+                            디자인 기초이론
+                        </li></a>
+                        <a href="./graphic.html"><li class="nav-item btn btn-outline-dark rounded-pill d-flex align-items-center">
+                            디자인 인사이트
+                    </ul></a>
+                    <div class="ms-auto d-flex align-items-center">
+                        <input type="text" class="form-control rounded-pill me-2" id="search" placeholder="Search">
+                        <a href="./mypage.html"><i class="bi bi-person-circle profile_icon"></i></a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <div class="content-container ps-5">
+            <div class="book-cover mt-5 p-4 ps-5">
+                <img src="./bookimage/브랜드디자인.jpg" alt="Book Cover">
+            </div>
+            <div class="book-info pt-5 ps-5">
+                <h1>브랜드디자인</h1>
+                <p class="author">캐서린 슬레이드브루킹</p> <br /><br />
+                <p class="weight">출판사: 홍디자인</p>
+                <p class="texts">브랜드 아이덴티티를 구축하는 방법과 과정을 체계적으로 설명한 책으로, 디자이너와 마케터에게 실질적인 지침을 제공합니다. 이 책은 브랜드 디자인의 핵심 원칙을 다루며, 전략적 접근법과 창의적인 실행 과정을 사례와 함께 제시합니다.
+                </p>
+                <div class="purchase-links">
+                    <a href="https://www.amazon.com/Creating-Brand-Identity-Essential-Guide/dp/1780675623" class="amazon">Amazon</a>
+                    <a href="https://product.kyobobook.co.kr/detail/S000001881370" class="kyobo">교보문고</a>
+                    <a href="https://www.yes24.com/Product/Goods/60744111" class="yes24">Yes24</a>
+                </div>
+            </div>
+
+            <div class="description ps-5">
+                <br />
+                <br />
+                <h4 class="mb-4">책의 주요 내용</h4> <br />
+                
+                <p class="weight">브랜드 아이덴티티의 기본 이해: </p>
+                    <p>브랜드란 무엇인지, 브랜드 아이덴티티가 왜 중요한지 설명합니다.
+                        로고, 색상, 타이포그래피, 비주얼 스타일 등 브랜드를 시각적으로 구성하는 핵심 요소들을 정의합니다.
+                        </p> <br />
+                
+                <p class="weight">브랜드 전략 수립: </p>
+                    <p>브랜드의 비전, 미션, 가치를 정의하고 이를 시각적으로 표현하는 과정에 대해 다룹니다.
+                        시장 조사, 타겟 고객 분석, 경쟁자 분석 등 브랜드 전략의 필수 단계를 설명합니다.</p> <br />
+                
+                <p class="weight">디자인 프로세스: </p>
+                    <p>브랜드 디자인의 초기 개념화에서 최종 실행까지의 과정을 단계별로 나눠 설명합니다.
+                        스케치, 프로토타입 제작, 고객과의 피드백 과정 등을 통해 효과적인 결과물을 도출하는 방법을 제시합니다.</p> <br />
+                
+                <p class="weight">브랜드 시스템 구성: </p>
+                    <p>브랜드 가이드라인의 중요성과, 브랜드 일관성을 유지하기 위한 로고 사용법, 색상 팔레트, 타이포그래피 시스템 등을 제안합니다.
+                        디지털 및 인쇄 매체에서의 일관된 적용 방법을 설명합니다.</p> <br />
+                
+                <p class="weight">실제 사례 연구: </p>
+                    <p>다양한 산업의 브랜드 디자인 사례를 포함하여 독자들에게 실질적인 아이디어와 영감을 제공합니다.
+                        브랜드 리브랜딩 프로젝트와 성공적인 사례를 통해 문제 해결 과정을 분석합니다.</p> <br />
+                
+                <p class="weight">창의성과 비즈니스의 균형: </p>
+                    <p>디자인의 창의적 요소와 비즈니스 목표 사이의 균형을 유지하는 방법을 논의합니다.
+                        디자이너가 비즈니스적 사고를 개발하고 고객의 요구에 부응하는 방법을 제시합니다.
+                    </p> <br />
+                <br /> <br /> <br />
+
+                <h4 class="mb-4">이 책이 특별한 이유</h4> <br />
+
+                <p class="weight">초보자와 전문가를 모두 위한 가이드: </p>
+                <p>브랜드 아이덴티티의 기본 개념부터 고급 디자인 기법까지 다뤄, 초보자에게는 체계적인 학습을, 전문가에게는 새로운 통찰을 제공합니다.
+                </p> <br />
+
+                <p class="weight">실질적인 접근법: </p>
+                <p>이론에만 치우치지 않고, 구체적인 실습과 실제 사례를 통해 독자들이 디자인 프로세스를 바로 적용할 수 있도록 돕습니다.
+                </p><br />
+
+                <p class="weight">브랜드와 디자인의 연결: </p>
+                <p>디자인과 브랜딩의 상호작용을 깊이 탐구하며, 디자이너가 브랜딩 전략을 효과적으로 반영하는 방법을 강조합니다.</p><br />
+
+                <p class="weight">다양한 사례와 비주얼 자료: </p>
+                <p>풍부한 비주얼 자료와 실무에서 사용 가능한 체크리스트, 워크시트를 포함하여 실질적인 학습 경험을 제공합니다.</p><br />
+            </div>
+
+            <div class="authors ps-5 mt-5"><h5>작가정보</h>
+            <div class="author-info ps-4 ">
+                <img src="./캐서린슬레이드브루킹.jpeg" alt="Author Image">
+                <div class="author-text">
+                    <h3>캐서린 슬레이드브루킹</h3>
+                    <p>캐서린 슬레이드브루킹은 영국의 디자이너이자 브랜딩 전문가로, 브랜드 아이덴티티 구축과 그래픽 디자인을 중심으로 활동해 왔습니다. 그녀는 교육자로서도 활발히 활동하며, 디자이너들에게 브랜딩의 중요성과 실무 기술을 가르치는 데 주력하고 있습니다.
+                    </p>
+                </div>
+            </div>
+        </div>
+            
+        </div>
+
+
+        
+
+
+        <div class="reviews mt-4 ">
+            <h3>Reviews</h3>
+            <div class="comment-box mt-4">
+                <textarea class="form-control" placeholder="댓글을 입력하세요..." rows="3"></textarea>
+                <button class="btn btn-primary mt-2">댓글 작성</button>
+            </div>
+            <div class="comment mt-4">
+                <p><strong>fwefvvszd:</strong> 아주 좋아요.</p>
+            </div>
+            <div class="comment mt-2">
+                <p><strong>skfneqvfg1:</strong> 브랜딩에 대해서 공부하는 학생이면 굉장히 좋을 듯!</p>
+            </div>
+        </div>
+
+        <!-- <div class="sns-links">
+            <h3>서점 SNS</h3>
+            <div class="d-flex justify-content-center">
+                <a href="#" class="btn btn-danger">
+                    <i class="bi bi-youtube"></i>
+                </a>
+                <a href="#" class="btn btn-primary">
+                    <i class="bi bi-facebook"></i>
+                </a>
+                <a href="#" class="btn btn-warning">
+                    <i class="bi bi-instagram"></i>
+                </a>
+            </div>
+        </div> -->
+
+
+    <!-- Footer -->
+    <footer class="text-center py-4 bg-light">
+        <p class="text-muted">&copy; 2024 Designed by Designbookmark</p>
+    </footer>
+
+
+        <!-- Bootstrap JS -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    </body>
+</html>
+
+

@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Design Bookmark</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&family=Playwrite+IE:wght@369&display=swap');
+        
+        a {
+            text-decoration: none; /* 밑줄 제거 */
+            color: inherit; /* 부모 요소의 색상 상속 */
+        }
+
+        body {
+            font-family: "Noto Sans KR", sans-serif;
+            font-optical-sizing: auto;
+
+
+            background-color: #f9f9f9;
+            margin: 0;
+
+            background: #ff6e7f;  /* fallback for old browsers */
+            background: -webkit-linear-gradient(to bottom, #4e58e6, #ececec, #ececec, #ffed84);  /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient(to bottom, #4e58e6, #ececec, #ececec, #ffed84); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        }
+
+        .navbar {
+                padding: 15px 30px;
+                z-index: 1030;
+                width: 100%;
+                position: fixed;
+                top: 0;
+                background-color: white;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+                
+
+
+                font-family: "Playwrite IE", cursive;
+                font-optical-sizing: auto;
+                font-weight: 369;
+                font-style: normal;
+                font-size: 20px;
+            }
+
+            .navbar .btn-outline-dark {
+                border: 2px solid #ffed84;
+                padding: 5px 15px;
+                font-weight: bold;
+                transition: all 0.3s ease;
+                font-size: 14px;
+                margin-left: 10px;
+                margin-top: 10px;
+                background-color: #4e58e6;
+                color: #ffed84;
+            }
+
+            #search {
+                margin-right: 20px;
+                margin-left: 10px;
+            }
+
+            .profile_icon {
+                font-size: 2rem;
+                height: 50px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .profile_icon {
+                margin-left: 50px;
+            }            
+
+            .navbar .form-control:focus {
+                border-color: #999;
+                box-shadow: none;
+            }
+
+    
+            .profile-page {
+                max-width: 1000px;
+                margin: 120px auto;
+                padding: 30px;
+                background-color: #bfe9ff;
+                border-radius: 10px;
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            }
+
+            .profile-page h2 {
+                font-size: 2rem;
+                color: #333;
+                margin-bottom: 30px;
+                text-align: center;
+            }
+
+
+
+            
+            .layout {
+                display: flex;
+                margin: 40px auto;
+                max-width: 1200px;
+                gap: 20px; /* Sidebar와 main-content 사이의 간격 */
+                margin-top: 100px;
+            }
+
+            .sidebar {
+                width: 250px;
+                background-color: rgba(255, 255, 255, 0.9);
+                border: 1px solid #ddd;
+                border-radius: 10px;
+                padding: 20px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                position: sticky; /* 화면 크기에 따라 고정 */
+                top: 100px; /* Navbar 높이에 맞춤 */
+                height: calc(100vh - 120px); /* Navbar 높이를 뺀 나머지 높이 */
+                overflow-y: auto;
+                flex-shrink: 0; /* 너비 고정 */
+            }
+
+            .main-content {
+                flex-grow: 1; /* 남은 공간을 차지 */
+                background-color: rgba(255, 255, 255, 0.4);
+                padding: 20px;
+                border: 1px solid #ddd;
+                border-radius: 10px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            }
+
+
+
+        .sidebar h2 {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #181818;
+        }
+
+        .sidebar a {
+            display: block;
+            font-size: 1rem;
+            color: #1d1d1d;
+            margin-bottom: 15px;
+            text-decoration: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: background-color 0.2s;
+        }
+
+        .sidebar a:hover {
+            background-color: #f1f1f1;
+            color: #4e58e6;
+        }
+
+
+        .main-content h2 {
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .books-grid {
+                display: grid;
+                grid-template-columns: repeat(4, 1fr);
+                gap: 20px;
+                margin-top: 30px;
+            }
+
+            @media (max-width: 992px) { 
+                .books-grid {
+                    grid-template-columns: repeat(3, 1fr);
+                }
+            }
+
+            @media (max-width: 768px) { 
+                .books-grid {
+                    grid-template-columns: repeat(2, 1fr); 
+                }
+            }
+
+            @media (max-width: 576px) {
+                .books-grid {
+                    grid-template-columns: 1fr;
+                }
+            }
+
+        .book-card {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+            transition: transform 0.2s;
+        }
+
+        .book-card img {
+            width: 100%;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+
+        .book-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            display: none;
+        }
+
+        .popup-content {
+            background-color: #fff;
+            padding: 50px;
+            border-radius: 10px;
+            text-align: center;
+            max-width: 500px;
+            max-height: 700px;
+            width: 100%;
+        }
+
+        .popup-content h1 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+
+        .popup-content img {
+            max-width: 70%;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .popup-content button {
+            padding: 10px 20px;
+            font-size: 1rem;
+            border: none;
+            border-radius: 5px;
+            background-color: #ff465f;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .popup-content button:hover {
+            background-color: #0056b3;
+        }
+
+        #warning {
+            margin-top: -10px;
+            font-size: 12px;
+            font-weight: 400;
+        }
+
+        .newbook {
+            font-size: 10px;
+            color:#069a28;
+            font-weight: 400;
+        }
+
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg bg-white shadow-sm">
+        <div class="container-fluid d-flex align-items-center">
+            <a class="navbar-brand d-flex align-items-center me-3" href="#">
+                <img src="./디북마크 로고.png" id="logo" alt="Logo" width="24" class="me-2">
+                <span class="fw-bold" id="pagename"><a href="./index.html">Designbookmark</a></span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <a href="./basic.html"><li class="nav-item btn btn-outline-dark rounded-pill d-flex align-items-center">
+                        디자인 기초이론
+                    </li></a>
+                    <a href="./graphic.html"><li class="nav-item btn btn-outline-dark rounded-pill d-flex align-items-center">
+                        디자인 인사이트
+                </ul></a>
+                <div class="ms-auto d-flex align-items-center">
+                    <input type="text" class="form-control rounded-pill me-2" id="search" placeholder="Search">
+                    <a href="./mypage.html"><i class="bi bi-person-circle profile_icon"></i></a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="popup" id="popup">
+        <div class="popup-content">
+            <a href="./retrodesign.html"><h1><b>Y2K 감성의 그래픽 디자인을 <br />해보고 싶다면?</b></h1>
+            <img src="./bookimage/레트로디자인.jpg" alt="Book Cover">
+            <h2 class="mb-4">레트로디자인</h2> </a>
+            <button id="close-popup">닫기</button>
+        </div>
+    </div>
+
+    <div class="layout">
+        <div class="sidebar">
+            <h2 class="mt-4">Advanced</h2>
+
+            <div class="mt-5">
+                <a href="#graphic" data-bs-target="#layout" class="nav-link">그래픽디자인</a>
+                <a href="#uxui" data-bs-target="#typography" class="nav-link">UX/UI</a>
+                <a href="#branding" data-bs-target="#colortheory" class="nav-link">브랜딩</a>
+                <a href="#space" data-bs-target="#philosophy" class="nav-link">공간디자인</a>
+                <a href="#product" data-bs-target="#aesthetic" class="nav-link">산업디자인</a>
+                <a href="#editorial" data-bs-target="#aesthetic" class="nav-link">편집디자인</a>
+            </div>
+        </div>
+
+        <div class="main-content" id="allbooks">
+            <h2 class="mt-4">Books</h2>
+            <h5>디자인 실력을 높이는 디자인 분야별 도서들의 집합소</h5>
+            <p class="text-danger mt-2" id="warning">*아직 책 정보가 업데이트 되지 않은 책은 눌리지 않습니다</p>
+            <div id="graphic"></div><br /><br />
+            <div class="books-grid mt-5">
+                <!-- 책 카드 리스트 -->
+                <div class="book-card">
+                    <a href="./graphicdesignmanual.html"><img src="./bookimage/그래픽디자인매뉴얼.jpg" alt="Book 1">
+                    <p> 그래픽 디자인 메뉴얼</p>
+                
+                    <p class="newbook"> 업데이트 완료!</p></a>
+                </div>
+                <div class="book-card">
+                    <img src="./bookimage/그래픽디자인사용설명서.jpg" alt="Book 2">
+                    <p>그래픽 디자인 사용설명서</p>
+                </div>
+                <div class="book-card">
+                    <img src="./bookimage/아이디어가고갈난디자이너를위한책.jpg" alt="Book 3">
+                    <p>아이디어가 고갈난 디자이너를 위한 책</p>
+                </div>
+                <div class="book-card">
+                    <a href="./retrodesign.html"><img src="./bookimage/레트로디자인.jpg" alt="Book 3">
+                    <p>레트로디자인</p>
+
+                    <p class="newbook"> 업데이트 완료!</p></a>
+                </div>
+                <div class="book-card">
+                    <img src="./bookimage/디자인의법칙.jpg" alt="Book 3">
+                    <p>디자인의 법칙</p>
+                </div>
+                <div class="book-card">
+                    <img src="./bookimage/스위스 그래픽 디자인.jpg" alt="Book 3">
+                    <p>스위스그래픽디자인</p>
+                </div>
+                <div class="book-card">
+                    <img src="./bookimage/인포그래픽스.jpg" alt="Book 3">
+                    <p>인포그래픽스</p>
+                </div>
+            </div>
+
+            <div id="uxui"></div><br /><br />
+            <div class="books-grid mt-5">
+                <!-- 책 카드 리스트 -->
+                <div class="book-card">
+                    <a href="./donald4.html"><img src="./bookimage/도널드노먼의ux디자인특강.jpg" alt="Book 1">
+                    <p>도널드 노먼의 UX 디자인 특강</p>
+
+                    <p class="newbook"> 업데이트 완료!</p></a>
+                </div>
+                <div class="book-card">
+                    <a href="./donald2.html"><img src="./bookimage/도널드노먼의사용자중심디자인.jpg" alt="Book 2">
+                    <p>도널드 노먼의 사용자 중심 디자인</p>
+
+                    <p class="newbook"> 업데이트 완료!</p></a>
+                </div>
+                <div class="book-card">
+                    <a href="./donald3.html"><img src="./bookimage/도널드노먼의인터랙션특강.jpg" alt="Book 3">
+                    <p>도널드 노먼의 인터랙션 특강</p>
+
+                    <p class="newbook"> 업데이트 완료!</p></a>
+                </div>
+                <div class="book-card">
+                    <img src=".//bookimage/커뮤니티디자인.jpg" alt="Book 3">
+                    <p>커뮤니티디자인</p>
+                </div>
+                <div class="book-card">
+                    <img src="./bookimage/하루5분UX.jpg" alt="Book 3">
+                    <p>하루 5분 UX</p>
+                </div>
+            </div>
+
+            <div id="branding"></div><br /><br />
+            <div class="books-grid mt-5">
+                <!-- 책 카드 리스트 -->
+                <div class="book-card">
+                    <img src="./bookimage/newsuperidentity.jpg" alt="Book 1">
+                    <p>New super Identity</p>
+                </div>
+                <div class="book-card">
+                    <img src="./bookimage/wallyOlinsthebrandhandbook.jpg" alt="Book 2">
+                    <p>Wally Olins: the brand handbook</p>
+                </div>
+                <div class="book-card">
+                    <img src="./bookimage/로고대백과.jpg" alt="Book 3">
+                    <p>로고대백과</p>
+                </div>
+                <div class="book-card">
+                    <a href="./branddesign.html"><img src="./bookimage/브랜드디자인.jpg" alt="Book 3">
+                    <p>브랜드디자인</p>
+
+                    <p class="newbook"> 업데이트 완료!</p></a>
+                </div>
+                
+                <div class="book-card">
+                    <img src="./bookimage/브랜드디자인이렇게하나요.jpg" alt="Book 3">
+                    <p>브랜드디자인 이렇게 하나요</p>
+                </div>
+            </div>
+
+
+            <div id="space"></div><br /><br />
+            <div class="books-grid mt-5">
+                <!-- 책 카드 리스트 -->
+                <div class="book-card">
+                    <img src="./bookimage/photographyatMoma.jpg" alt="Book 1">
+                    <p>Photography at MOMA</p>
+                </div>
+                <div class="book-card">
+                    <img src="./bookimage/공간디자이너는어떻게일할까.jpg" alt="Book 2">
+                    <p>공간 디자이너는 어떻게 일할까</p>
+                </div>
+                <div class="book-card">
+                    <img src="./bookimage/더인간적인건축.jpg" alt="Book 3">
+                    <p>더 인간적인 건축</p>
+                </div>
+                <div class="book-card">
+                    <img src="./bookimage/상업공간경험을디자인하다.jpg" alt="Book 3">
+                    <p>상업 공간 경험을 디자인하다</p>
+                </div>
+                <div class="book-card">
+                    <img src="./bookimage/전시디자인.jpg" alt="Book 3">
+                    <p>전시 디자인</p>
+                </div>
+                <div class="book-card">
+                    <img src="./bookimage/실내건축공간을위한컬러디자인.jpeg" alt="Book 3">
+                    <p>실내 건축 공간을 위한 컬러 디자인</p>
+                </div>
+            </div>
+
+            <div id="product"></div><br /><br />
+            <div class="books-grid mt-5">
+                <!-- 책 카드 리스트 -->
+                <div class="book-card">
+                    <img src="./bookimage/디터람스.jpg" alt="Book 1">
+                    <p>디터람스</p>
+                </div>
+                <div class="book-card">
+                    <img src="./bookimage/제품디자인스타일링의기술.jpg" alt="Book 2">
+                    <p>제품 디자인 스타일링의 기술</p>
+                </div>
+                <div class="book-card">
+                    <img src="./bookimage/턴테이블라이프디자인.jpg" alt="Book 3">
+                    <p>턴테이블 라이프 디자인</p>
+                </div>
+                <div class="book-card">
+                    <img src="./bookimage/체어.jpg" alt="Book 3">
+                    <p>체어</p>
+                </div>
+                <div class="book-card">
+                    <img src="./bookimage/아름다운것들의역사.jpg" alt="Book 3">
+                    <p>아름다운 것들의 역사</p>
+                </div>
+            </div>
+
+        
+            <div id="editorial"></div><br /><br />
+            <div class="books-grid mt-5">
+                <!-- 책 카드 리스트 -->
+                <div class="book-card">
+                    <img src="./bookimage/권외편집자.jpg" alt="Book 1">
+                    <p>권외편집자</p>
+                </div>
+                <div class="book-card">
+                    <img src="./bookimage/미드센추리모던디자인아이콘.jpg" alt="Book 2">
+                    <p>미드 센추리 모던 디자인 아이콘</p>
+                </div>
+            </div>
+
+        </div>
+        </div>
+    </div>
+
+
+            <div class="scroll-arrow">
+                <i class="bi bi-chevron-up"></i>
+            </div>
+
+                    <!-- Footer -->
+        <footer class="text-center py-4 bg-light">
+            <p class="text-muted">&copy; 2024 Designed by Designbookmark</p>
+        </footer>
+
+    <script>
+        const popup = document.getElementById('popup');
+        const closePopup = document.getElementById('close-popup');
+
+        window.addEventListener('load', () => {
+            popup.style.display = 'flex';
+        });
+
+        closePopup.addEventListener('click', () => {
+            popup.style.display = 'none';
+        });
+
+        const scrollArrow = document.querySelector('.scroll-arrow');
+
+        scrollArrow.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        const filterButtons = document.querySelectorAll('.filter-tabs button');
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+            });
+        });
+    </script>
+    
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
