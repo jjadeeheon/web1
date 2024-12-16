@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Design Bookmark</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg bg-white shadow-sm">
+        <div class="container-fluid d-flex align-items-center">
+            <a class="navbar-brand d-flex align-items-center me-3" href="#">
+                <img src="./디북마크 로고.png" id="logo" alt="Logo" width="24" class="me-2">
+                <span class="fw-bold" id="pagename"><a href="./index.html">Designbookmark</a></span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <a href="./basic.html"><li class="nav-item btn btn-outline-dark rounded-pill d-flex align-items-center">
+                        디자인의 기초
+                    </li></a>
+                    <a href="./graphic.html"><li class="nav-item btn btn-outline-dark rounded-pill d-flex align-items-center">
+                        디자인 사고와 소양
+                </ul></a>
+                <div class="ms-auto d-flex align-items-center">
+                    <input type="text" class="form-control rounded-pill me-2" id="search" placeholder="Search">
+                    <a href="./mypage.html"><i class="bi bi-person-circle profile_icon"></i></a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section with Background Image -->
+    <section class="hero d-flex flex-column justify-content-center align-items-center text-center py-5 position-relative">
+
+        
+        <div class="container">
+            <div class="row">
+                <div class="col text-center">
+                    <h1 class="display-4 fw-bold">Get your design knowledge</h1> <br />
+                    <p>학생부터 프로까지 모두 찾는 디자인북마크</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<!-- Featured Book Section -->
+<section class="featured-book-section py-5 m-5">
+    <div class="container text-center">
+        <i class="bi bi-book-half fs-1 mt-5"></i>
+        <h2 class="fw-bold mb-3 mt-3" id="mainbookcontext">디자이너라면 알아야 할 필독서</h2>
+        <p class="text-success mb-4">탄탄한 디자인 기본기를 위해서라면 꼭 읽어야 해요!</p>
+        <div class="row">
+        
+        <!-- Featured Book Section -->
+        <section class="threebooks py-5 align-items-center">
+            <div class="container">
+                <div class="row">
+                    <!-- Book 1 -->
+                    <div class="col-md-4 col-lg-2 mx-auto book-wrapper">
+                        <div class="book-hover">
+                            <img src="./bookimage/조형의원리.jpeg" alt="Book 1" class="book-img img-fluid rounded shadow">
+                            <div class="book-info">
+                                <a href="./pof1.html"><h5>조형의 원리</h5>
+                                <p>저자: 데이비드 A. 라우어</p>
+                                <p>디자인 분야에서 가장 기본적이고 중요한 개념들을 명확하게 설명하는 책입니다.</p>
+                            </div></a>
+                        </div>
+                    </div>
+                    <!-- Book 2 -->
+                    <div class="col-md-4 col-lg-2 mx-auto book-wrapper">
+                        <div class="book-hover">
+                            <a href="./layout1.html"><img src="./bookimage/레이아웃불변의법칙100가지.jpeg" alt="Book 2" class="book-img img-fluid rounded shadow">
+                            <div class="book-info">
+                                <h5>레이아웃 <br >불변의 법칙 100가지</h5>
+                                <p>베스 톤드로</p>
+                                <p>레이아웃에 관한 100가지 실용적인 법칙을 배워보세요.</p>
+                            </div></a>
+                        </div>
+                    </div>
+                    <!-- Book 3 -->
+                    <div class="col-md-4 col-lg-2 mx-auto book-wrapper">
+                        <div class="book-hover">
+                            <a href="./typography.html"><img src="./bookimage/타이포그래피에밀루더.jpg" alt="Book 3" class="book-img img-fluid rounded shadow">
+                            <div class="book-info">
+                                <h5>타이포그래피</h5>
+                                <p>저자: 작성자 정보</p>
+                                <p>타이포그래피에 대한 기초부터 고급 테크닉까지 배워보세요.</p>
+                            </div></a>
+                        </div>
+                    </div>
+                    <!-- Book 4 -->
+                    <div class="col-md-4 col-lg-2 mx-auto book-wrapper">
+                        <div class="book-hover">
+                            <a href="./typography_korean.html"><img src="./bookimage/한글의글자표현.jpg" alt="Book 4" class="book-img img-fluid rounded shadow">
+                            <div class="book-info">
+                                <h5>한글의 글자 표현</h5>
+                                <p>저자: 작성자 정보</p>
+                                <p>한글 글자 표현의 다채로운 방법을 알아보세요.</p>
+                            </div></a>
+                        </div>
+                    </div>
+                    <!-- Book 5 -->
+                    <div class="col-md-4 col-lg-2 mx-auto book-wrapper">
+                        <div class="book-hover">
+                            <a href="./book1.html"><img src="./bookimage/한글디자인교과서.jpg" alt="Book 5" class="book-img img-fluid rounded shadow">
+                            <div class="book-info">
+                                <h5>한글디자인교과서</h5>
+                                <p>저자: 작성자 정보</p>
+                                <p>타이포그래피에 대한 기초부터 고급 테크닉까지 배워보세요.</p>
+                            </div></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        </div>
+    </div>
+</section>
+
+
+
+    <!-- Popular Products Section -->
+    <section class="popular-products-section py-5">
+        <div class="container">
+            <h2 class="fw-bold mb-5 mt-5 custom-left-align">
+                <i class="bi bi-bookmark-heart-fill"></i> 급상승! 많이 보고 있는 책
+            </h2>
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4 mt-4 g-4">
+                <div class="col">
+                    <div class="card border-2">
+                        <a href="./designofdesign.html"><img src="./bookimage/디자인의디자인.jpg" class="card-img-top rounded" alt="혼한남매 18">
+                        <div class="card-body p-4 mt-2">
+                            <p class="text-muted small">디자인적 사고와 소양</p>
+                            <p class="fw-bold">디자인의 디자인</p>
+                            <p class="text-muted">하라 켄야</p></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card border-2">
+                        <a href="./graphicdesignmanual.html"><img src="./bookimage/그래픽디자인매뉴얼.jpg" class="card-img-top rounded" alt="미로 속 아이">
+                        <div class="card-body p-4 mt-2">
+                            <p class="text-muted small">그래픽디자인</p>
+                            <p class="fw-bold">그래픽디자인 매뉴얼</p>
+                            <p class="text-muted">아르민 호프만</p></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card border-2">
+                        <img src="./bookimage/브랜드디자인.jpg" class="card-img-top rounded" alt="인플루엔자">
+                        <a href="./branddesign.html"><div class="card-body p-4 mt-2">
+                            <p class="text-muted small">브랜딩</p>
+                            <p class="fw-bold">브랜드디자인</p>
+                            <p class="text-muted">캐서린 슬레이드브루킹</p>
+                        </div></a>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card border-2">
+                        <a href="./colordesign.html"><img src="./bookimage/색채디자인교과서.jpg" class="card-img-top rounded" alt="해피버스데이">
+                        <div class="card-body p-4 mt-2">
+                            <p class="text-muted small">색채원리</p>
+                            <p class="fw-bold">색채 디자인 교과서</p>
+                            <p class="text-muted">문은배</p>
+                        </div></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="picks-section py-5" style="background-color: #f8f9fa;">
+        <div class="container">
+            <div class="row">
+                <!-- 텍스트 영역 -->
+                <div class="col-lg-3 d-flex flex-column justify-content-center">
+                    <h2 class="fw-bold">Picks</h2>
+                    <p class="text-success">오늘의 디자이너, 도날드 노먼</p>
+                    <p class="fw-bold">세계에서 가장 영향력 있는 디자이너, <br />도널드 노먼의 디자인 철학에 대해 알아보세요</p>
+                </div>
+                <!-- 카드 영역 -->
+                <div class="col-lg-9">
+                    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+                        <!-- 책 1 -->
+                        <div class="col">
+                            <div class="card border-0 ms-4">
+                                <a href="./donald1.html"><img src="./bookimage/도널드노먼의디자인심리학.jpg" class="card-img-top rounded" alt="추천 1">
+                                <div class="card-body p-0 mt-4">
+                                    <p class="fw-bold">도널드 노먼의 디자인 심리학</p>
+                                    <p class="text-muted small mt-2 mb-4">UX와 HCI를 위한 인지과학 교과서</p>
+                                </div></a>
+                            </div>
+                        </div>
+                        <!-- 책 2 -->
+                        <div class="col">
+                            <div class="card border-0">
+                                <a href="./bookimage/도널드노먼의사용자중심디자인.jpg"></a><img src="./bookimage/도널드노먼의사용자중심디자인.jpg" class="card-img-top rounded" alt="추천 2">
+                                <div class="card-body p-0 mt-4">
+                                    <p class="fw-bold">도널드 노먼의 사용자 중심 디자인</p>
+                                    <p class="text-muted small mt-2 mb-4">UX와 HCI의 기본 철학에 관하여</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 책 3 -->
+                        <div class="col">
+                            <div class="card border-0">
+                                <a href="./donald3.html"><img src="./bookimage/도널드노먼의인터랙션특강.jpg" class="card-img-top rounded" alt="추천 3">
+                                <div class="card-body p-0 mt-4">
+                                    <p class="fw-bold">인간과 프로덕트의 상호작용 디자인</p>
+                                    <p class="text-muted small mt-2 mb-4">린치핀</p>
+                                </div></a>
+                            </div>
+                        </div>
+                        <!-- 책 4 -->
+                        <div class="col">
+                            <div class="card border-0">
+                                <a href="./donald4.html"><img src="./bookimage/도널드노먼의ux디자인특강.jpg" class="card-img-top rounded" alt="추천 4">
+                                <div class="card-body p-0 mt-4">
+                                    <p class="fw-bold">도널드 노먼의 UX 디자인 특강</p>
+                                    <p class="text-muted small mt-2 mb-4">복잡한 세상의 디자인을 말하다</p>
+                                </div></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    
+
+<!-- Book Section -->
+<section class="all-books-section py-5" style="background: linear-gradient(180deg, #bfe9ff 0%, rgb(255, 255, 255) 100%);">
+    <div class="container">
+        <div class="row g-3">
+            <!-- Book Card 1 -->
+            <div class="col-6 col-md-4 col-lg-2">
+                <div class="card h-100 shadow-sm">
+                    <img src="./bookimage/adrianfrutigerstypeface.jpg" alt="Book 1" class="card-img-top" style="height: auto; object-fit: cover;">
+                </div>
+            </div>
+            <!-- Book Card 2 -->
+            <div class="col-6 col-md-4 col-lg-2">
+                <div class="card h-100 shadow-sm">
+                    <img src="./bookimage/lessismore.jpg" alt="Book 2" class="card-img-top" style="height: auto; object-fit: cover;">
+                </div>
+            </div>
+            <!-- Book Card 3 -->
+            <div class="col-6 col-md-4 col-lg-2">
+                <div class="card h-100 shadow-sm">
+                    <img src="./bookimage/newsuperidentity.jpg" alt="Book 3" class="card-img-top" style="height: auto; object-fit: cover;">
+                </div>
+            </div>
+            <!-- Book Card 4 -->
+            <div class="col-6 col-md-4 col-lg-2">
+                <div class="card h-100 shadow-sm">
+                    <img src="./bookimage/photographyatMoma.jpg" alt="Book 4" class="card-img-top" style="height: auto; object-fit: cover;">
+                </div>
+            </div>
+            <!-- Book Card 5 -->
+            <div class="col-6 col-md-4 col-lg-2">
+                <div class="card h-100 shadow-sm">
+                    <img src="./bookimage/ux기획의기술.jpg" alt="Book 5" class="card-img-top" style="height: auto; object-fit: cover;">
+                </div>
+            </div>
+            <!-- Book Card 6 -->
+            <div class="col-6 col-md-4 col-lg-2">
+                <div class="card h-100 shadow-sm">
+                    <img src="./bookimage/wallyOlinsthebrandhandbook.jpg" alt="Book 6" class="card-img-top" style="height: auto; object-fit: cover;">
+                </div>
+            </div>
+            <!-- Book Card 7 -->
+            <div class="col-6 col-md-4 col-lg-2">
+                <div class="card h-100 shadow-sm">
+                    <img src="./bookimage/공간디자이너는어떻게일할까.jpg" alt="Book 7" class="card-img-top" style="height: auto; object-fit: cover;">
+                </div>
+            </div>
+                        <!-- Book Card 7 -->
+                        <div class="col-6 col-md-4 col-lg-2">
+                            <div class="card h-100 shadow-sm">
+                                <img src="./bookimage/권외편집자.jpg" alt="Book 7" class="card-img-top" style="height: auto; object-fit: cover;">
+                            </div>
+                        </div>            <!-- Book Card 7 -->
+                        <div class="col-6 col-md-4 col-lg-2">
+                            <div class="card h-100 shadow-sm">
+                                <img src="./bookimage/그래픽디자인매뉴얼.jpg" alt="Book 7" class="card-img-top" style="height: auto; object-fit: cover;">
+                            </div>
+                        </div>            <!-- Book Card 7 -->
+                        <div class="col-6 col-md-4 col-lg-2">
+                            <div class="card h-100 shadow-sm">
+                                <img src="./bookimage/그래픽디자인사용설명서.jpg" alt="Book 7" class="card-img-top" style="height: auto; object-fit: cover;">
+                            </div>
+                        </div>            <!-- Book Card 7 -->
+                        <div class="col-6 col-md-4 col-lg-2">
+                            <div class="card h-100 shadow-sm">
+                                <img src="./bookimage/더인간적인건축.jpg" alt="Book 7" class="card-img-top" style="height: auto; object-fit: cover;">
+                            </div>
+                        </div>            <!-- Book Card 7 -->
+                        <div class="col-6 col-md-4 col-lg-2">
+                            <div class="card h-100 shadow-sm">
+                                <img src="./bookimage/도널드노먼의ux디자인특강.jpg" alt="Book 7" class="card-img-top" style="height: auto; object-fit: cover;">
+                            </div>
+                        </div>            <!-- Book Card 7 -->
+                        <div class="col-6 col-md-4 col-lg-2">
+                            <div class="card h-100 shadow-sm">
+                                <img src="./bookimage/도널드노먼의디자인심리학.jpg" alt="Book 7" class="card-img-top" style="height: auto; object-fit: cover;">
+                            </div>
+                        </div>            <!-- Book Card 7 -->
+                        <div class="col-6 col-md-4 col-lg-2">
+                            <div class="card h-100 shadow-sm">
+                                <img src="./bookimage/도널드노먼의사용자중심디자인.jpg" alt="Book 7" class="card-img-top" style="height: auto; object-fit: cover;">
+                            </div>
+                        </div>            <!-- Book Card 7 -->
+                        <div class="col-6 col-md-4 col-lg-2">
+                            <div class="card h-100 shadow-sm">
+                                <img src="./bookimage/도널드노먼의인터랙션특강.jpg" alt="Book 7" class="card-img-top" style="height: auto; object-fit: cover;">
+                            </div>
+                        </div>            <!-- Book Card 7 -->
+                        <div class="col-6 col-md-4 col-lg-2">
+                            <div class="card h-100 shadow-sm">
+                                <img src="./bookimage/디자인너머.jpg" alt="Book 7" class="card-img-top" style="height: auto; object-fit: cover;">
+                            </div>
+                        </div>            <!-- Book Card 7 -->
+                        <div class="col-6 col-md-4 col-lg-2">
+                            <div class="card h-100 shadow-sm">
+                                <img src="./bookimage/디자인불변의법칙125가지.jpg" alt="Book 7" class="card-img-top" style="height: auto; object-fit: cover;">
+                            </div>
+                        </div>            <!-- Book Card 7 -->
+                        <div class="col-6 col-md-4 col-lg-2">
+                            <div class="card h-100 shadow-sm">
+                                <img src="./bookimage/디자인씽킹바이블.jpg" alt="Book 7" class="card-img-top" style="height: auto; object-fit: cover;">
+                            </div>
+                        </div>            <!-- Book Card 7 -->
+                        <div class="col-6 col-md-4 col-lg-2">
+                            <div class="card h-100 shadow-sm">
+                                <img src="./bookimage/디자인역사속의스타일.jpg" alt="Book 7" class="card-img-top" style="height: auto; object-fit: cover;">
+                            </div>
+                        </div>            <!-- Book Card 7 -->
+                        <div class="col-6 col-md-4 col-lg-2">
+                            <div class="card h-100 shadow-sm">
+                                <img src="./bookimage/디자인을위한컬러사전.jpg" alt="Book 7" class="card-img-top" style="height: auto; object-fit: cover;">
+                            </div>
+                        </div>            <!-- Book Card 7 -->
+                        <div class="col-6 col-md-4 col-lg-2">
+                            <div class="card h-100 shadow-sm">
+                                <img src="./bookimage/디자인의가치.jpg" alt="Book 7" class="card-img-top" style="height: auto; object-fit: cover;">
+                            </div>
+                        </div>            <!-- Book Card 7 -->
+                        <div class="col-6 col-md-4 col-lg-2">
+                            <div class="card h-100 shadow-sm">
+                                <img src="./bookimage/디자인의디자인.jpg" alt="Book 7" class="card-img-top" style="height: auto; object-fit: cover;">
+                            </div>
+                        </div>            <!-- Book Card 7 -->
+                        <div class="col-6 col-md-4 col-lg-2">
+                            <div class="card h-100 shadow-sm">
+                                <img src="./bookimage/디자인의역사.jpg" alt="Book 7" class="card-img-top" style="height: auto; object-fit: cover;">
+                            </div>
+                        </div>            <!-- Book Card 7 -->
+                        <div class="col-6 col-md-4 col-lg-2">
+                            <div class="card h-100 shadow-sm">
+                                <img src="./bookimage/디자인의정석.jpg" alt="Book 7" class="card-img-top" style="height: auto; object-fit: cover;">
+                            </div>
+                        </div> 
+                        
+                        <!-- Book Card 7 -->
+                        <div class="col-6 col-md-4 col-lg-2">
+                            <div class="card h-100 shadow-sm">
+                                <img src="./bookimage/디지털 시대의 타이포그래피.jpg" alt="Book 7" class="card-img-top" style="height: auto; object-fit: cover;">
+                            </div>
+                        </div> <!-- Book Card 7 -->
+                        <div class="col-6 col-md-4 col-lg-2">
+                            <div class="card h-100 shadow-sm">
+                                <img src="./bookimage/디터람스.jpg" alt="Book 7" class="card-img-top" style="height: auto; object-fit: cover;">
+                            </div>
+                        </div> <!-- Book Card 7 -->
+                        <div class="col-6 col-md-4 col-lg-2">
+                            <div class="card h-100 shadow-sm">
+                                <img src="./bookimage/레이아웃불변의법칙100가지.jpeg" alt="Book 7" class="card-img-top" style="height: auto; object-fit: cover;">
+                            </div>
+                        </div> <!-- Book Card 7 -->
+                        <div class="col-6 col-md-4 col-lg-2">
+                            <div class="card h-100 shadow-sm">
+                                <img src="./bookimage/로고대백과.jpg" alt="Book 7" class="card-img-top" style="height: auto; object-fit: cover;">
+                            </div>
+                        </div> <!-- Book Card 7 -->
+                        <div class="col-6 col-md-4 col-lg-2">
+                            <div class="card h-100 shadow-sm">
+                                <img src="./bookimage/무인양품디자인.jpg" alt="Book 7" class="card-img-top" style="height: auto; object-fit: cover;">
+                            </div>
+                        </div> <!-- Book Card 7 -->
+                        <div class="col-6 col-md-4 col-lg-2">
+                            <div class="card h-100 shadow-sm">
+                                <img src="./bookimage/미드센추리모던디자인아이콘.jpg" alt="Book 7" class="card-img-top" style="height: auto; object-fit: cover;">
+                            </div>
+
+
+
+                        </div> <!-- Book Card 7 -->
+                        <div class="col-6 col-md-4 col-lg-2">
+                            <div class="card h-100 shadow-sm">
+                                <img src="./bookimage/브랜드디자인.jpg" alt="Book 7" class="card-img-top" style="height: auto; object-fit: cover;">
+                            </div>
+                        </div>
+                        <!-- Book Card 7 -->
+                        <div class="col-6 col-md-4 col-lg-2">
+                            <div class="card h-100 shadow-sm">
+                                <img src="./bookimage/브랜드디자인이렇게하나요.jpg" alt="Book 7" class="card-img-top" style="height: auto; object-fit: cover;">
+                            </div>
+                        </div>
+                        <!-- Book Card 7 -->
+                        <div class="col-6 col-md-4 col-lg-2">
+                            <div class="card h-100 shadow-sm">
+                                <img src="./bookimage/상업공간경험을디자인하다.jpg" alt="Book 7" class="card-img-top" style="height: auto; object-fit: cover;">
+                            </div>
+                        </div>
+                        <!-- Book Card 7 -->
+                        <div class="col-6 col-md-4 col-lg-2">
+                            <div class="card h-100 shadow-sm">
+                                <img src="./bookimage/색채디자인교과서.jpg" alt="Book 7" class="card-img-top" style="height: auto; object-fit: cover;">
+                            </div>
+                        </div>
+                        <!-- Book Card 7 -->
+                        <div class="col-6 col-md-4 col-lg-2">
+                            <div class="card h-100 shadow-sm">
+                                <img src="./bookimage/아이디어가고갈된.jpg" alt="Book 7" class="card-img-top" style="height: auto; object-fit: cover;">
+                            </div>
+                        </div>
+                        <!-- Book Card 7 -->
+                        <div class="col-6 col-md-4 col-lg-2">
+                            <div class="card h-100 shadow-sm">
+                                <img src="./bookimage/인간을위한디자인.jpg" alt="Book 7" class="card-img-top" style="height: auto; object-fit: cover;">
+                            </div>
+                        </div>
+                        <!-- Book Card 7 -->
+                        <div class="col-6 col-md-4 col-lg-2">
+                            <div class="card h-100 shadow-sm">
+                                <img src="./bookimage/인포그래픽스.jpg" alt="Book 7" class="card-img-top" style="height: auto; object-fit: cover;">
+                            </div>
+                        </div>
+                        <!-- Book Card 7 -->
+                        <div class="col-6 col-md-4 col-lg-2">
+                            <div class="card h-100 shadow-sm">
+                                <img src="./bookimage/저공비행.jpg" alt="Book 7" class="card-img-top" style="height: auto; object-fit: cover;">
+                            </div>
+                        </div>
+                        <!-- Book Card 7 -->
+                        <div class="col-6 col-md-4 col-lg-2">
+                            <div class="card h-100 shadow-sm">
+                                <img src="./bookimage/전시디자인.jpg" alt="Book 7" class="card-img-top" style="height: auto; object-fit: cover;">
+                            </div>
+                        </div>
+                        <!-- Book Card 7 -->
+                        <div class="col-6 col-md-4 col-lg-2">
+                            <div class="card h-100 shadow-sm">
+                                <img src="./bookimage/제품디자인스타일링의기술.jpg" alt="Book 7" class="card-img-top" style="height: auto; object-fit: cover;">
+                            </div>
+                        </div>
+                        <!-- Book Card 7 -->
+                        <div class="col-6 col-md-4 col-lg-2">
+                            <div class="card h-100 shadow-sm">
+                                <img src="./bookimage/조형의원리.jpeg" alt="Book 7" class="card-img-top" style="height: auto; object-fit: cover;">
+                            </div>
+                        </div>
+                        <!-- Book Card 7 -->
+                        <div class="col-6 col-md-4 col-lg-2">
+                            <div class="card h-100 shadow-sm">
+                                <img src="./bookimage/좋은디자인을만드는33가지서체이야기.jpg" alt="Book 7" class="card-img-top" style="height: auto; object-fit: cover;">
+                            </div>
+                        </div>
+                        <!-- Book Card 7 -->
+                        <div class="col-6 col-md-4 col-lg-2">
+                            <div class="card h-100 shadow-sm">
+                                <img src="./bookimage/체어.jpg" alt="Book 7" class="card-img-top" style="height: auto; object-fit: cover;">
+                            </div>
+                        </div>
+                        <!-- Book Card 7 -->
+                        <div class="col-6 col-md-4 col-lg-2">
+                            <div class="card h-100 shadow-sm">
+                                <img src="./bookimage/커뮤니티디자인.jpg" alt="Book 7" class="card-img-top" style="height: auto; object-fit: cover;">
+                            </div>
+                        </div>
+                        <!-- Book Card 7 -->
+                        <div class="col-6 col-md-4 col-lg-2">
+                            <div class="card h-100 shadow-sm">
+                                <img src="./bookimage/타이포그래피에밀루더.jpg" alt="Book 7" class="card-img-top" style="height: auto; object-fit: cover;">
+                            </div>
+                        </div>
+                                                <!-- Book Card 7 -->
+                                                <div class="col-6 col-md-4 col-lg-2">
+                                                    <div class="card h-100 shadow-sm">
+                                                        <img src="./bookimage/타이포그래피위계디자인웬만큼이해하기.jpg" alt="Book 7" class="card-img-top" style="height: auto; object-fit: cover;">
+                                                    </div>
+                                                </div>                        <!-- Book Card 7 -->
+                                                <div class="col-6 col-md-4 col-lg-2">
+                                                    <div class="card h-100 shadow-sm">
+                                                        <img src="./bookimage/타이포그래피의숲.jpg" alt="Book 7" class="card-img-top" style="height: auto; object-fit: cover;">
+                                                    </div>
+                                                </div>                        <!-- Book Card 7 -->
+                                                <div class="col-6 col-md-4 col-lg-2">
+                                                    <div class="card h-100 shadow-sm">
+                                                        <img src="./bookimage/타이포그래피의탄생.jpg" alt="Book 7" class="card-img-top" style="height: auto; object-fit: cover;">
+                                                    </div>
+                                                </div>                        <!-- Book Card 7 -->
+                                                <div class="col-6 col-md-4 col-lg-2">
+                                                    <div class="card h-100 shadow-sm">
+                                                        <img src="./bookimage/턴테이블라이프디자인.jpg" alt="Book 7" class="card-img-top" style="height: auto; object-fit: cover;">
+                                                    </div>
+                                                </div>                        <!-- Book Card 7 -->
+                                                <div class="col-6 col-md-4 col-lg-2">
+                                                    <div class="card h-100 shadow-sm">
+                                                        <img src="./bookimage/하루5분UX.jpg" alt="Book 7" class="card-img-top" style="height: auto; object-fit: cover;">
+                                                    </div>
+                                                </div>                        <!-- Book Card 7 -->
+                                                <div class="col-6 col-md-4 col-lg-2">
+                                                    <div class="card h-100 shadow-sm">
+                                                        <img src="./bookimage/하루한장컬러의법칙.jpg" alt="Book 7" class="card-img-top" style="height: auto; object-fit: cover;">
+                                                    </div>
+                                                </div>                        <!-- Book Card 7 -->
+                                                <div class="col-6 col-md-4 col-lg-2">
+                                                    <div class="card h-100 shadow-sm">
+                                                        <img src="./bookimage/한글디자인교과서.jpg" alt="Book 7" class="card-img-top" style="height: auto; object-fit: cover;">
+                                                    </div>
+                                                </div>                        <!-- Book Card 7 -->
+                                                <div class="col-6 col-md-4 col-lg-2">
+                                                    <div class="card h-100 shadow-sm">
+                                                        <img src="./bookimage/한글디자인품과격.jpg" alt="Book 7" class="card-img-top" style="height: auto; object-fit: cover;">
+                                                    </div>
+                                                </div>                        <!-- Book Card 7 -->
+                                                <div class="col-6 col-md-4 col-lg-2">
+                                                    <div class="card h-100 shadow-sm">
+                                                        <img src="./bookimage/한글의글자표현.jpg" alt="Book 7" class="card-img-top" style="height: auto; object-fit: cover;">
+                                                    </div>
+                                                </div>                      
+                                            
+        </div>
+    </div>
+</section>
+    
+    
+    
+
+    <!-- Footer -->
+    <footer class="text-center py-4 bg-light">
+        <p class="text-muted">&copy; 2024 Designed by Designbookmark</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
